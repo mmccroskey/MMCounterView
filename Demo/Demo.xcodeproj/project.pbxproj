@@ -17,6 +17,7 @@
 		8D34BF3C161AB654007D6051 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D34BF3B161AB654007D6051 /* Foundation.framework */; };
 		8D34BF3E161AB654007D6051 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D34BF3D161AB654007D6051 /* CoreGraphics.framework */; };
 		8D6899FF161FA063002015AA /* MMCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6899FE161FA063002015AA /* MMCounterView.m */; };
+		8D689A07161FA60B002015AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D689A05161FA5FE002015AA /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		8D34BF3D161AB654007D6051 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8D6899FD161FA063002015AA /* MMCounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MMCounterView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8D6899FE161FA063002015AA /* MMCounterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MMCounterView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8D689A05161FA5FE002015AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,9 +44,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D34BF3A161AB654007D6051 /* UIKit.framework in Frameworks */,
-				8D34BF3C161AB654007D6051 /* Foundation.framework in Frameworks */,
 				8D34BF3E161AB654007D6051 /* CoreGraphics.framework in Frameworks */,
+				8D34BF3C161AB654007D6051 /* Foundation.framework in Frameworks */,
+				8D689A07161FA60B002015AA /* QuartzCore.framework in Frameworks */,
+				8D34BF3A161AB654007D6051 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,9 +131,10 @@
 		8D34BF38161AB654007D6051 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8D34BF39161AB654007D6051 /* UIKit.framework */,
-				8D34BF3B161AB654007D6051 /* Foundation.framework */,
 				8D34BF3D161AB654007D6051 /* CoreGraphics.framework */,
+				8D34BF3B161AB654007D6051 /* Foundation.framework */,
+				8D689A05161FA5FE002015AA /* QuartzCore.framework */,
+				8D34BF39161AB654007D6051 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
