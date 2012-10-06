@@ -1,0 +1,4 @@
+platform :ios, '5.1'
+xcodeproj 'Demo.xcodeproj'
+
+pod 'CPAnimationSequence', :git => 'https://github.com/mmccroskey/CPAnimationSequence.git', :tag => '0.1.0'
