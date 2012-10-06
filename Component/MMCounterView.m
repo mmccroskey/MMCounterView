@@ -99,7 +99,8 @@ typedef enum CounterViewAnimationDirection
     
     // Adjust the frame and font size of the label so that
     // it fits and is centered within our parent view with a nice margin
-    CGFloat parentWidth = self.frame.size.width;
+    CGFloat parentWidth  = self.frame.size.width;
+    CGFloat parentHeight = self.frame.size.height;
     CGFloat eightyPercentOfWidth = floorf(parentWidth-(parentWidth*0.2)); // This leaves 10% margin on either side
     CGFloat actualFontSize = 0; // This is overwritten when passed by reference into the method below
     CGSize  labelSize = [[NSString stringWithFormat:@"%d+", self.truncationBoundary]
@@ -107,17 +108,20 @@ typedef enum CounterViewAnimationDirection
                          minFontSize:10.0 actualFontSize:&actualFontSize
                          forWidth:eightyPercentOfWidth
                          lineBreakMode:UILineBreakModeClip];
-    CGFloat border = floorf(((parentWidth - labelSize.width)/2.0)); // This gets us the margin that should be placed on either side for it to be centered
+    CGFloat labelHeight = floorf(MIN(labelSize.height, parentHeight)); // For some reason, sizeWithFont sometimes returns huge heights
+    CGFloat widthBorder  = floorf(((parentWidth - labelSize.width)/2.0));   // This gets us the margin that should be placed on either side for it to be centered
+    CGFloat heightBorder = floorf(((parentHeight - labelHeight)/2.0)); // This gets us the margin that should be placed on top and bottom for it to be centered
+    CGRect  labelFrame = CGRectMake(widthBorder, heightBorder, floorf(labelSize.width), labelHeight);
     
     // Configure labelA
-    self.labelA = [[UILabel alloc] initWithFrame:CGRectMake(border, ((self.frame.size.height-labelSize.height)/2), floorf(labelSize.width), floorf(labelSize.height))];
+    self.labelA = [[UILabel alloc] initWithFrame:labelFrame];
     //[self.labelA setCenter:self.center];
     [self.labelA setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
     [self.labelA setTextAlignment:UITextAlignmentCenter];
     [self.labelA setBackgroundColor:[UIColor blueColor]];
     
     // Configure labelB
-    self.labelB = [[UILabel alloc] initWithFrame:CGRectMake(border, ((self.frame.size.height-labelSize.height)/2), floorf(labelSize.width), floorf(labelSize.height))];
+    self.labelB = [[UILabel alloc] initWithFrame:labelFrame];
     //[self.labelB setCenter:self.center];
     [self.labelB setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
     [self.labelB setTextAlignment:UITextAlignmentCenter];
