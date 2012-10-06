@@ -19,6 +19,7 @@
 @implementation ViewController
 
 @synthesize counterView = counterView_;
+@synthesize previousInteger = previousInteger_;
 
 - (void)viewDidLoad
 {
