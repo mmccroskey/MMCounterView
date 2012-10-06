@@ -8,15 +8,15 @@
 #
 Pod::Spec.new do |s|
   s.name         = "MMCounterView"
-  s.version      = "0.0.1"
+  s.version      = "0.4.1"
   s.summary      = "A 'high score'-style counting view that animates between different displayed integers."
   s.homepage     = "https://github.com/mmccroskey/MMCounterView"
   s.license      = { :type => 'Creative Commons Attribution-NonCommercial-ShareAlike', :file => 'LICENSE.txt' }
   s.author       = { "mmccroskey" => "matthew.mccroskey@gmail.com" }
-  s.source       = { :git => "https://github.com/mmccroskey/MMCounterView.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/mmccroskey/MMCounterView.git", :tag => "0.4.1" }
   s.platform     = :ios, '5.1'
   s.source_files = 'Component'
   s.frameworks   = 'CoreGraphics', 'Foundation', 'QuartzCore', 'UIKit'
   s.requires_arc = true
-  s.dependency 'CPAnimationSequence', :git => 'https://github.com/mmccroskey/CPAnimationSequence.git', :tag => '0.1.0'
+  s.dependency 'CPAnimationSequence', :git => 'https://github.com/mmccroskey/CPAnimationSequence.git', :tag => '0.2.1'
 end
