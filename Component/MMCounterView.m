@@ -30,6 +30,7 @@ typedef enum CounterViewAnimationDirection
 - (void)configure;
 - (void)animate;
 - (NSString*)stringForInteger:(NSInteger)integer;
+- (void)ensureDefaultValue:(id)defaultValue forObject:(id)object;
 
 @end
 
@@ -92,7 +93,7 @@ typedef enum CounterViewAnimationDirection
     integer_ = 0;
     sourceInteger_ = 0;
     targetInteger_ = 0;
-    [self setBackgroundColor:[UIColor lightGrayColor]];
+    [self ensureDefaultValue:[UIColor lightGrayColor] forObject:self.backgroundColor];
     [self setTextColor:[UIColor darkTextColor]];
     [self setTruncationBoundary:100];
     [self setTicksPerSecond:25.0];
@@ -118,14 +119,14 @@ typedef enum CounterViewAnimationDirection
     //[self.labelA setCenter:self.center];
     [self.labelA setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
     [self.labelA setTextAlignment:UITextAlignmentCenter];
-    [self.labelA setBackgroundColor:[UIColor blueColor]];
+    [self.labelA setBackgroundColor:[UIColor clearColor]];
     
     // Configure labelB
     self.labelB = [[UILabel alloc] initWithFrame:labelFrame];
     //[self.labelB setCenter:self.center];
     [self.labelB setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
     [self.labelB setTextAlignment:UITextAlignmentCenter];
-    [self.labelB setBackgroundColor:[UIColor blueColor]];
+    [self.labelB setBackgroundColor:[UIColor clearColor]];
     
     // Add the labels to the parent view
     [self addSubview:self.labelB];
@@ -237,6 +238,11 @@ typedef enum CounterViewAnimationDirection
     {
         return [NSString stringWithFormat:@"%d", integer];
     }
+}
+
+- (void)ensureDefaultValue:(id)defaultValue forObject:(id)object
+{
+    object = object ? object : defaultValue;
 }
 
 @end
