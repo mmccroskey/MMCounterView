@@ -104,7 +104,6 @@
 }
 
 - (void) run {
-	NSLog(@"%@", self);
 	[self runAnimated:YES];
 }
 

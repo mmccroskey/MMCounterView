@@ -1,17 +1,15 @@
 
 PODS:
-- CPAnimationSequence (0.1.0)
+- CPAnimationSequence (0.2.1)
 
 DEPENDENCIES:
-- CPAnimationSequence (from `https://github.com/mmccroskey/CPAnimationSequence.git',
-  tag `0.1.0')
+- CPAnimationSequence (from `https://github.com/mmccroskey/CPAnimationSequence.git')
 
 EXTERNAL SOURCES:
   CPAnimationSequence:
     :git: https://github.com/mmccroskey/CPAnimationSequence.git
-    :tag: 0.1.0
 
 SPEC CHECKSUMS:
-  CPAnimationSequence: 00754488e09f6f9ced6f1ca0565bd8c8dc7e1d45
+  CPAnimationSequence: 1afe6c2ae23052e45545b6644d1a77823ccbf34f
 
 COCOAPODS: 0.15.0
