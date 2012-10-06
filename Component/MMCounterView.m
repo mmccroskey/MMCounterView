@@ -97,7 +97,8 @@ typedef enum CounterViewAnimationDirection
     [self setTruncationBoundary:100];
     [self setTicksPerSecond:25.0];
     
-    // Adjust the frame and font size of the label so that it fits into our parent view with a nice margin
+    // Adjust the frame and font size of the label so that
+    // it fits and is centered within our parent view with a nice margin
     CGFloat parentWidth = self.frame.size.width;
     CGFloat eightyPercentOfWidth = floorf(parentWidth-(parentWidth*0.2)); // This leaves 10% margin on either side
     CGFloat actualFontSize = 0; // This is overwritten when passed by reference into the method below
@@ -109,16 +110,18 @@ typedef enum CounterViewAnimationDirection
     CGFloat border = floorf(((parentWidth - labelSize.width)/2.0)); // This gets us the margin that should be placed on either side for it to be centered
     
     // Configure labelA
-    self.labelA = [[UILabel alloc] initWithFrame:CGRectMake(border, border, floorf(labelSize.width), floorf(labelSize.height))];
+    self.labelA = [[UILabel alloc] initWithFrame:CGRectMake(border, ((self.frame.size.height-labelSize.height)/2), floorf(labelSize.width), floorf(labelSize.height))];
+    //[self.labelA setCenter:self.center];
     [self.labelA setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
     [self.labelA setTextAlignment:UITextAlignmentCenter];
-    [self.labelA setBackgroundColor:[UIColor clearColor]];
+    [self.labelA setBackgroundColor:[UIColor blueColor]];
     
     // Configure labelB
-    self.labelB = [[UILabel alloc] initWithFrame:CGRectMake(border, border, floorf(labelSize.width), floorf(labelSize.height))];
+    self.labelB = [[UILabel alloc] initWithFrame:CGRectMake(border, ((self.frame.size.height-labelSize.height)/2), floorf(labelSize.width), floorf(labelSize.height))];
+    //[self.labelB setCenter:self.center];
     [self.labelB setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
     [self.labelB setTextAlignment:UITextAlignmentCenter];
-    [self.labelB setBackgroundColor:[UIColor clearColor]];
+    [self.labelB setBackgroundColor:[UIColor blueColor]];
     
     // Add the labels to the parent view
     [self addSubview:self.labelB];
