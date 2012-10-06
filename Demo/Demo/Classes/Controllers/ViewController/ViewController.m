@@ -11,14 +11,14 @@
 
 @interface ViewController ()
 
-@property (weak) IBOutlet MMCounterView *CounterView;
+@property (weak) IBOutlet MMCounterView *counterView;
 @property NSInteger previousInteger;
 
 @end
 
 @implementation ViewController
 
-@synthesize CounterView = CounterView_;
+@synthesize counterView = counterView_;
 
 - (void)viewDidLoad
 {
@@ -30,12 +30,12 @@
 
 - (void)updateValue
 {
-    self.previousInteger = self.CounterView.integer;
+    self.previousInteger = self.counterView.integer;
     NSInteger integer = (arc4random() % 120);
-    [self.CounterView setInteger:integer];
+    [self.counterView setInteger:integer];
     
     NSInteger numberOfTicks = abs(integer-self.previousInteger);
-    [self performSelector:@selector(updateValue) withObject:nil afterDelay:((1.0/self.CounterView.ticksPerSecond)*numberOfTicks+1)];
+    [self performSelector:@selector(updateValue) withObject:nil afterDelay:((1.0/self.counterView.ticksPerSecond)*numberOfTicks+1)];
 }
 
 
