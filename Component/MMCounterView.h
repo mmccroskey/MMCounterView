@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MMCounterView : UIButton
+@interface MMCounterView : UIView
 
 @property        NSInteger integer;            // Defaults to 0
 @property        NSInteger truncationBoundary; // Defaults to 100

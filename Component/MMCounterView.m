@@ -25,7 +25,7 @@ typedef enum CounterViewAnimationDirection
 @property NSInteger sourceInteger;
 @property NSInteger targetInteger;
 
-@property CounterViewAnimationDirection CounterViewAnimationDirection;
+@property CounterViewAnimationDirection counterViewAnimationDirection;
 
 - (void)configure;
 - (void)animate;
@@ -47,7 +47,7 @@ typedef enum CounterViewAnimationDirection
 @synthesize labelB = labelB_;
 @synthesize sourceInteger = sourceInteger_;
 @synthesize targetInteger = targetInteger_;
-@synthesize CounterViewAnimationDirection = CounterViewAnimationDirection_;
+@synthesize counterViewAnimationDirection = counterViewAnimationDirection_;
 
 #pragma mark - Custom Getters and Setters
 
@@ -94,7 +94,7 @@ typedef enum CounterViewAnimationDirection
     sourceInteger_ = 0;
     targetInteger_ = 0;
     [self ensureDefaultValue:[UIColor lightGrayColor] forObject:self.backgroundColor];
-    [self setTextColor:[UIColor darkTextColor]];
+    [self ensureDefaultValue:[UIColor darkTextColor]  forObject:self.textColor];
     [self setTruncationBoundary:100];
     [self setTicksPerSecond:25.0];
     
@@ -110,20 +110,18 @@ typedef enum CounterViewAnimationDirection
                          forWidth:eightyPercentOfWidth
                          lineBreakMode:UILineBreakModeClip];
     CGFloat labelHeight = floorf(MIN(labelSize.height, parentHeight)); // For some reason, sizeWithFont sometimes returns huge heights
-    CGFloat widthBorder  = floorf(((parentWidth - labelSize.width)/2.0));   // This gets us the margin that should be placed on either side for it to be centered
+    CGFloat widthBorder  = floorf(((parentWidth - labelSize.width)/2.0)); // This gets us the margin that should be placed on either side for it to be centered
     CGFloat heightBorder = floorf(((parentHeight - labelHeight)/2.0)); // This gets us the margin that should be placed on top and bottom for it to be centered
     CGRect  labelFrame = CGRectMake(widthBorder, heightBorder, floorf(labelSize.width), labelHeight);
     
     // Configure labelA
     self.labelA = [[UILabel alloc] initWithFrame:labelFrame];
-    //[self.labelA setCenter:self.center];
     [self.labelA setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
     [self.labelA setTextAlignment:UITextAlignmentCenter];
     [self.labelA setBackgroundColor:[UIColor clearColor]];
     
     // Configure labelB
     self.labelB = [[UILabel alloc] initWithFrame:labelFrame];
-    //[self.labelB setCenter:self.center];
     [self.labelB setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
     [self.labelB setTextAlignment:UITextAlignmentCenter];
     [self.labelB setBackgroundColor:[UIColor clearColor]];
@@ -193,7 +191,7 @@ typedef enum CounterViewAnimationDirection
     {
         CPAnimationStep *currentStep = [CPAnimationStep for:(1.0/self.ticksPerSecond) animate:^{
             NSInteger integer = -1;
-            if (self.CounterViewAnimationDirection == kCounterViewAnimationDirectionAscending)
+            if (self.counterViewAnimationDirection == kCounterViewAnimationDirectionAscending)
             {
                 integer = self.sourceInteger + localCounter + 1;
             }
