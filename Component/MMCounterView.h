@@ -16,5 +16,6 @@
 @property        CGFloat   ticksPerSecond;     // Defaults to 25.0; indicates how many animations should occur per second
 
 @property (weak) UIColor   *textColor;         // Defaults to darkTextColor
+@property (weak) UIFont    *font;              // Defaults to boldSystemFont, using an appropriate size based on the view's frame
 
 @end

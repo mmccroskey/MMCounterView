@@ -39,8 +39,9 @@ typedef enum CounterViewAnimationDirection
 // Public property synthesis
 @synthesize integer = integer_;
 @synthesize truncationBoundary = truncationBoundary_;
-@synthesize textColor = textColor_;
 @synthesize ticksPerSecond = ticksPerSecond_;
+@synthesize textColor = textColor_;
+@synthesize font = font_;
 
 // Private property synthesis
 @synthesize labelA = labelA_;
@@ -85,6 +86,17 @@ typedef enum CounterViewAnimationDirection
     [self.labelB setTextColor:textColor];
 }
 
+- (UIFont*)font
+{
+    return self.labelA.font;
+}
+
+- (void)setFont:(UIFont *)font
+{
+    [self.labelA setFont:font];
+    [self.labelB setFont:font];
+}
+
 #pragma mark - Initialization and Configuration Methods
 
 - (void)configure
@@ -95,6 +107,7 @@ typedef enum CounterViewAnimationDirection
     targetInteger_ = 0;
     [self ensureDefaultValue:[UIColor lightGrayColor] forObject:self.backgroundColor];
     [self ensureDefaultValue:[UIColor darkTextColor]  forObject:self.textColor];
+    [self ensureDefaultValue:[UIFont boldSystemFontOfSize:300.0] forObject:self.font]; // Will be resized as appropriate below
     [self setTruncationBoundary:100];
     [self setTicksPerSecond:25.0];
     
@@ -105,7 +118,7 @@ typedef enum CounterViewAnimationDirection
     CGFloat eightyPercentOfWidth = floorf(parentWidth-(parentWidth*0.2)); // This leaves 10% margin on either side
     CGFloat actualFontSize = 0; // This is overwritten when passed by reference into the method below
     CGSize  labelSize = [[NSString stringWithFormat:@"%d+", self.truncationBoundary]
-                         sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:300.0]
+                         sizeWithFont:self.font
                          minFontSize:10.0 actualFontSize:&actualFontSize
                          forWidth:eightyPercentOfWidth
                          lineBreakMode:UILineBreakModeClip];
@@ -116,13 +129,13 @@ typedef enum CounterViewAnimationDirection
     
     // Configure labelA
     self.labelA = [[UILabel alloc] initWithFrame:labelFrame];
-    [self.labelA setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
+    [self.labelA setFont:[UIFont fontWithName:self.font.fontName size:actualFontSize]];
     [self.labelA setTextAlignment:UITextAlignmentCenter];
     [self.labelA setBackgroundColor:[UIColor clearColor]];
     
     // Configure labelB
     self.labelB = [[UILabel alloc] initWithFrame:labelFrame];
-    [self.labelB setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:actualFontSize]];
+    [self.labelB setFont:[UIFont fontWithName:self.font.fontName size:actualFontSize]];
     [self.labelB setTextAlignment:UITextAlignmentCenter];
     [self.labelB setBackgroundColor:[UIColor clearColor]];
     
