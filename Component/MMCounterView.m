@@ -106,8 +106,8 @@ typedef enum CounterViewAnimationDirection
     sourceInteger_ = 0;
     targetInteger_ = 0;
     [self ensureDefaultValue:[UIColor lightGrayColor] forObject:self.backgroundColor];
-    [self ensureDefaultValue:[UIColor darkTextColor]  forObject:self.textColor];
-    [self ensureDefaultValue:[UIFont boldSystemFontOfSize:300.0] forObject:self.font]; // Will be resized as appropriate below
+    [self setTextColor:[UIColor darkTextColor]];
+    [self setFont:[UIFont boldSystemFontOfSize:300.0]]; // Will be resized as appropriate below
     [self setTruncationBoundary:100];
     [self setTicksPerSecond:25.0];
     
