@@ -13,7 +13,8 @@
 
 @property        NSInteger integer;            // Defaults to 0
 @property        NSInteger truncationBoundary; // Defaults to 100
+@property        CGFloat   ticksPerSecond;     // Defaults to 25.0; indicates how many animations should occur per second
+
 @property (weak) UIColor   *textColor;         // Defaults to darkTextColor
-@property        CGFloat   ticksPerSecond;     // Defaults to 10
 
 @end
