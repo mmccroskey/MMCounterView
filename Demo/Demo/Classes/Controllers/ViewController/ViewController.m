@@ -42,17 +42,22 @@
 {
     [super viewDidLoad];
     
-    self.previousIntegers = [[NSMutableDictionary alloc] initWithCapacity:4];
-    
+    NSInteger capacity = 1;
     [self.counterView1 setTag:counterView1Tag];
-    [self.counterView2 setTag:counterView2Tag];
-    [self.counterView3 setTag:counterView3Tag];
-    [self.counterView4 setTag:counterView4Tag];
-    
     [self performSelector:@selector(updateValueForCounterView:) withObject:self.counterView1 afterDelay:1.5];
-    [self performSelector:@selector(updateValueForCounterView:) withObject:self.counterView2 afterDelay:1.5];
-    [self performSelector:@selector(updateValueForCounterView:) withObject:self.counterView3 afterDelay:1.5];
-    [self performSelector:@selector(updateValueForCounterView:) withObject:self.counterView4 afterDelay:1.5];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        capacity = 4;
+        [self.counterView2 setTag:counterView2Tag];
+        [self.counterView3 setTag:counterView3Tag];
+        [self.counterView4 setTag:counterView4Tag];
+        [self performSelector:@selector(updateValueForCounterView:) withObject:self.counterView2 afterDelay:1.5];
+        [self performSelector:@selector(updateValueForCounterView:) withObject:self.counterView3 afterDelay:1.5];
+        [self performSelector:@selector(updateValueForCounterView:) withObject:self.counterView4 afterDelay:1.5];
+    }
+    
+    self.previousIntegers = [[NSMutableDictionary alloc] initWithCapacity:capacity];
 }
 
 - (void)updateValueForCounterView:(MMCounterView*)counterView
